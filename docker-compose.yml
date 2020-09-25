@@ -1,8 +1,17 @@
 version: '3'
 
 services:
+  vl_frontend:
+    image: docker.pkg.github.com/ai-poli-bllf/frontend/vl_frontend:latest
+    container_name: vl_frontend
+    restart: unless-stopped
+    networks:
+      - virtual_labs
+    ports:
+      - 4200:4200
+
   vl_backend:
-    image: docker.pkg.github.com/ai-poli-bllf/backend/vl_backend:0.0.2
+    image: docker.pkg.github.com/ai-poli-bllf/backend/vl_backend:latest
     container_name: vl_backend
     restart: unless-stopped
     networks:
@@ -19,13 +28,12 @@ services:
     networks:
       - virtual_labs
     volumes:
-      #      da cambiare prima dell'uso
-      - /home/stefano/IdeaProjects/Backend/db_data/:/var/lib/mysql
-    #    ports:
-    #      - 3306:3306
+      - db_data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=ciao123
       - MYSQL_DATABASE=teams
+volumes:
+  db_data:
 
 networks:
   virtual_labs:
