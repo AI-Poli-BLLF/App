@@ -9,3 +9,4 @@
     - `sudo docker-compose up -d vl_frontend` avvia il backend e il frontend    
 
 
+1. Per le registrazioni verrà usata una mail di test `applicazioni.internet.spam@gmail.com` per visualizzare le mail accedere con la password `d2Lg2uRnpA75TVY`.
